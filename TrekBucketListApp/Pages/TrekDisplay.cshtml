@@ -1,0 +1,14 @@
+﻿@page
+@model TrekBucketListApp.Pages.TrekDisplayModel
+@{
+}
+@{
+    @Model._TrekName
+    foreach (var item in Model.AllTrekList)
+    {
+        <p>
+            <h5>@item.ImageName</h5>
+            <img src=@item.ImageUrl width="200" height="150">
+        </p>
+    }
+}
