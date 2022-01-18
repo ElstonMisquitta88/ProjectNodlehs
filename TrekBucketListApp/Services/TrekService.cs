@@ -17,7 +17,7 @@ namespace TrekBucketListApp.Service
         {
             try
             {
-                /*_BaseAddress = Configuration["Values:BaseAddress"];
+                _BaseAddress = Configuration["Values:BaseAddress"];
                 _APIName = Configuration["Values:APIName"];
                 _APIKey =  Configuration["Values:APIKey"];
 
@@ -27,13 +27,15 @@ namespace TrekBucketListApp.Service
 
                 var res = await _client.GetAsync(TrekListUrl);
                 res.EnsureSuccessStatusCode();
-                */
+                
 
-                HttpClient _client = new HttpClient();
-                //_client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", "46e9cf27942f46f6a552acfae76eb236");
-                 _client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", "3f40a81b5df74617a54a9e88cfc1d74d");
+                // API Management Service
+                /*HttpClient _client = new HttpClient();
+                _client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", "3f40a81b5df74617a54a9e88cfc1d74d");
                 var TrekListUrl = new Uri($"https://demomgn.azure-api.net/FetchTreks/FetchTreks?nfolder="+_foldername+"");
                 var res = await _client.GetAsync(TrekListUrl);
+                */
+
                 return await res.Content.ReadFromJsonAsync<List<ImageList>>();
             }
             catch (HttpRequestException ex)
